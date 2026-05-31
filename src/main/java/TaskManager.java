@@ -3,20 +3,30 @@ public class TaskManager {
     private Task[] tasks = new Task[100];
     private int count = 0;
 
-    public void addTask(String title, String user, int priority) {
-        if (title != null && user != null && !title.equals("") && !user.equals("")) {
-            if (priority >= 1 && priority <= 3) {
-                Task t = new Task(title, user, priority);
-                tasks[count] = t;
-                count++;
-                System.out.println("Tarea añadida");
-            } else {
-                System.out.println("Prioridad incorrecta");
-            }
-        } else {
-            System.out.println("Datos incorrectos");
-        }
+   public void addTask(String title, String user, int priority) {
+    if (!isValidInput(title, user)) {
+        System.out.println("Datos incorrectos");
+        return;
     }
+
+    if (!isValidPriority(priority)) {
+        System.out.println("Prioridad incorrecta");
+        return;
+    }
+
+    tasks[count++] = new Task(title, user, priority);
+    System.out.println("Tarea añadida");
+}
+
+private boolean isValidInput(String title, String user) {
+    return title != null && user != null
+            && !title.trim().isEmpty()
+            && !user.trim().isEmpty();
+}
+
+private boolean isValidPriority(int priority) {
+    return priority >= 1 && priority <= 3;
+}
 
     public void completeTask(String title) {
         for (int i = 0; i < count; i++) {
