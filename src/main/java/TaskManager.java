@@ -29,11 +29,11 @@ private boolean isValidPriority(int priority) {
 }
 
     public void completeTask(String title) {
-        for (int i = 0; i < count; i++) {
-            if (tasks[i].getTitle().equals(title)) {
-                tasks[i].setDone(true);
-                System.out.println("Tarea completada");
-            }
+        Task task = findTask(title);
+
+        if (task != null) {
+            task.setDone(true);
+            System.out.println("Tarea completada");
         }
     }
 
