@@ -92,18 +92,26 @@ public void changePriority(String title, int p) {
     }
 }
 
+    /**
+    Muestra todas las tareas registradas.
+    */
     public void showAllTasks() {
-        System.out.println("LISTADO DE TAREAS");
+    System.out.println("LISTADO DE TAREAS");
         for (int i = 0; i < count; i++) {
-            System.out.println(tasks[i].toString());
+        // Se utiliza directamente toString().
+        System.out.println(tasks[i]);
         }
     }
 
+    /**
+    Muestra únicamente las tareas de un usuario concreto.
+    @param user usuario a consultar
+    */
     public void showTasksByUser(String user) {
-        System.out.println("TAREAS DE " + user.toUpperCase());
+    System.out.println("TAREAS DE " + user.toUpperCase());
         for (int i = 0; i < count; i++) {
             if (tasks[i].getUser().equals(user)) {
-                System.out.println(tasks[i].toString());
+                System.out.println(tasks[i]);
             }
         }
     }
