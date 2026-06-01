@@ -45,9 +45,13 @@ public void addTask(String title, String user, int priority) {
     }
 }
 
+    /**
+    Marca una tarea como completada.
+    @param title título de la tarea a completar
+    */
     public void completeTask(String title) {
+    // Se reutiliza el método de búsqueda para evitar código duplicado.
         Task task = findTask(title);
-
         if (task != null) {
             task.setDone(true);
             System.out.println("Tarea completada");
